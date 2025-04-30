@@ -1,0 +1,60 @@
+# Initialize study_log dictionary
+study_log = {
+    "Monday": 0.0,
+    "Tuesday": 0.0,
+    "Wednesday": 0.0,
+    "Thursday": 0.0,
+    "Friday": 0.0,
+}
+
+# Function to get a 'yes' or 'no' from user with any given prompt
+def get_yes_or_no(prompt):
+    answer = input(f"{prompt}, please answer 'yes' or 'no'. ").lower().strip()
+    if answer == "yes":
+        return answer
+    elif answer == "no":
+        return answer
+    else:
+        print("Invalid response. Please type 'yes' or 'no'. ")
+        return get_yes_or_no(prompt)
+
+# Function to get number of hours studied from user on any given day
+def get_study_hours(day):
+    result = input(f"How many hours did you study on {day}? ")
+    try:
+        result = float(result)
+        return result
+
+    except ValueError:
+        print("Invalid response. Please enter a valid number")
+        return get_study_hours(day)
+
+# Function to print summary of days and hours studied from dictionary as well as calculating and printing total_hours
+def print_summary(study_log):
+    total_hours = 0.0
+    for day, hours in study_log.items():
+        total_hours += hours
+        print(f"{day}: {hours:.1f} hours")
+    print(f"Total hours studied: {total_hours:.1f}")
+
+    if total_hours >= 10:
+        print("Great job staying focused this week!")
+
+    elif 5 <= total_hours < 10:
+        print("Solid effort, keep building the habit.")
+
+    elif total_hours < 5:
+        print("Let's try to dedicate more time next week.")
+
+# Main loop to get hours studied on specific days from user
+for day in study_log:
+    result = get_yes_or_no(f"Did you study on {day}?")
+    if result == "yes":
+        hours_studied = get_study_hours(day)
+        study_log[day] = hours_studied
+    
+    elif result == "no":
+        study_log[day] = 0
+
+# Call function to display final summary
+print_summary(study_log)
