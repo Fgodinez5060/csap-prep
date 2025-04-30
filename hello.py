@@ -1,1 +1,1 @@
-print("Hello from SAP Prep!")
+print("Hello from CSAP Prep!")
