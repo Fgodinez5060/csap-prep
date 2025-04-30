@@ -8,7 +8,7 @@ weekdays = {
     "Friday": "no"
 }
 
-daysStudied = 0
+days_studied = 0
 
 # Loop through all items in weekdays dictionary
 for day in weekdays:
@@ -19,7 +19,7 @@ for day in weekdays:
     # If they reply with yes, update that days value to yes
     if study == "y":
         weekdays[day] = "yes"
-        daysStudied += 1
+        days_studied += 1
 
     # If they reply with no, update that days value to no
     # (It is already false but for attention to detail I will be updating it to no anyway)
@@ -33,10 +33,10 @@ for day in weekdays:
 print("")
 
 # Output string based on performance
-if daysStudied == 5:
+if days_studied == 5:
     print("Perfect streak! Keep it up!\n")
 
-elif 2 < daysStudied < 5:
+elif 2 < days_studied < 5:
     print("Solid week! You're building momentum.\n")
 
 else:
