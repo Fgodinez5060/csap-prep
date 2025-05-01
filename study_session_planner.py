@@ -46,6 +46,30 @@ def print_summary(study_log):
     elif total_hours < 5:
         print("Let's try to dedicate more time next week.")
 
+def save_study_log(log_dict):
+    total_hours = 0.0
+    while True:
+        choice = input("Would you like to save as an overwrite or append? (Please reply with 'over' or 'app') ").lower().strip()
+        
+        if choice == "over":
+            with open("study_log.txt", "w") as file:
+                for day, hours in log_dict.items():
+                    file.write(f"{day}: {hours:.1f} hours\n")
+                    total_hours += hours
+                file.write(f"Total: {total_hours:.1f} hours\n")
+            break
+
+        elif choice == "app":
+            with open("study_log.txt", "a") as file:
+                for day, hours in log_dict.items():
+                    file.write(f"{day}: {hours:.1f} hours\n")
+                    total_hours += hours
+                file.write(f"Total: {total_hours:.1f} hours\n")
+            break
+
+        else:
+            print("Invalid response. Please enter a valid option ('over' or 'app')")
+
 # Main loop to get hours studied on specific days from user
 for day in study_log:
     result = get_yes_or_no(f"Did you study on {day}?")
@@ -58,3 +82,5 @@ for day in study_log:
 
 # Call function to display final summary
 print_summary(study_log)
+
+save_study_log(study_log)
