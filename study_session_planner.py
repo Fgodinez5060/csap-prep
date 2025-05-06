@@ -46,6 +46,7 @@ def print_summary(study_log):
     elif total_hours < 5:
         print("Let's try to dedicate more time next week.")
 
+# Function to save the study log with a choice of overwriting or appending to the txt file
 def save_study_log(log_dict):
     total_hours = 0.0
     while True:
@@ -69,6 +70,21 @@ def save_study_log(log_dict):
 
         else:
             print("Invalid response. Please enter a valid option ('over' or 'app')")
+
+# Function to open text file and see if there is recprevious study log data to print
+def load_study_log():
+        try:
+            with open("study_log.txt", "r") as file:
+                print("Previous Study Log:")
+                for line in file:
+                    print(line.strip())
+                print("")
+        except FileNotFoundError:
+            print("No previous study log found")
+
+
+# Calls function to load previous study log if available
+load_study_log()
 
 # Main loop to get hours studied on specific days from user
 for day in study_log:
