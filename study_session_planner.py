@@ -1,11 +1,3 @@
-# Initialize study_log dictionary
-study_log = {
-    "Monday": 0.0,
-    "Tuesday": 0.0,
-    "Wednesday": 0.0,
-    "Thursday": 0.0,
-    "Friday": 0.0,
-}
 
 # Function to get a 'yes' or 'no' from user with any given prompt
 def get_yes_or_no(prompt):
@@ -73,15 +65,40 @@ def save_study_log(log_dict):
 
 # Function to open text file and see if there is recprevious study log data to print
 def load_study_log():
-        try:
-            with open("study_log.txt", "r") as file:
-                print("Previous Study Log:")
-                for line in file:
-                    print(line.strip())
-                print("")
-        except FileNotFoundError:
-            print("No previous study log found")
+    try:
+        with open("study_log.txt", "r") as file:
+            print("Previous Study Log:")
+            for line in file:
+                print(line.strip())
+            print("")
+    except FileNotFoundError:
+        print("No previous study log found")
 
+# Function that will parse the study_log.txt to create the study_log dictionary
+def parse_study_log():
+    parsed_log = {}
+
+    try:
+        with open("study_log.txt", "r") as file:
+            for line in file:
+                line = line.strip()
+
+                if not line or line.startswith("Total"):
+                    continue
+
+                if ":" in line:
+                    day, data = line.split(":")
+                    hours = data.strip().split(" ")[0]
+                    parsed_log[day] = float(hours)
+
+
+    except FileNotFoundError:
+        print("No study log to parse")
+
+    return parsed_log
+
+# Build working dictionary by calling pasrse_study_log()
+study_log = parse_study_log()
 
 # Calls function to load previous study log if available
 load_study_log()

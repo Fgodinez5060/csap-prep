@@ -1,6 +1,6 @@
-Monday: 10.0 hours
-Tuesday: 2.3 hours
-Wednesday: 4.8 hours
+Monday: 0.0 hours
+Tuesday: 0.0 hours
+Wednesday: 0.0 hours
 Thursday: 0.0 hours
-Friday: 78.0 hours
-Total: 95.1 hours
+Friday: 0.0 hours
+Total: 0.0 hours
