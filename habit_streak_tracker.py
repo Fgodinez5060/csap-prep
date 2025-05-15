@@ -95,13 +95,26 @@ class HabitTracker:
                     "last_updated": date
                 })
 
-if __name__ == "__main__":
-    # Main menu loop to be added
+tracker = HabitTracker()
 
-    tracker = HabitTracker()
-    tracker.show_streaks()
-    tracker.add_habit()
-    tracker.show_streaks()
-    tracker.check_in()
-    tracker.show_streaks()
-    tracker.save_to_file()
+while True:
+    print("==== Habit Tracker Menu ====")
+    print("1. Add Habit")
+    print("2. Check In")
+    print("3. Show Streaks")
+    print("4. Save and Exit")
+
+    choice = input("Choose an option (1-4): ").strip()
+
+    if choice == "1":
+        tracker.add_habit()
+    elif choice == "2":
+        tracker.check_in()
+    elif choice == "3":
+        tracker.show_streaks()
+    elif choice == "4":
+        tracker.save_to_file()
+        print("Habits saved. Goodbye!")
+        break
+    else:
+        print("Invalid option. Please choose 1-4.")
